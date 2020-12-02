@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">LacusDemo</string>
+    <string name="btnMapa">Mapa</string>
+    <string name="btnInventario">Inventario</string>
+    <string name="btnAlta">Alta</string>
+    <string name="txtTitulo">Lacus Control</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="txtSubtitulo1">Darse de Alta</string>
+    <string name="edtPlacas">Placas</string>
+    <string name="edtMarca">Marca</string>
+    <string name="edtModelo">Modelo</string>
+    <string name="edtPeso">Peso</string>
+    <string name="edtCarga">Tipo de Carga</string>
+    <string name="btnAñadir">Añadir</string>
+    <string name="btnBorrar">Borrar</string>
+    <string name="edtFiltro">Filtro:Placa, modelo,etc</string>
+    <string name="btnFiltrar">Filtrar</string>
+    <string name="btnReiniciar">Reiniciar</string>
+    <string name="txtDatos">Aqui se mostraran todo el inventario</string>
+</resources>

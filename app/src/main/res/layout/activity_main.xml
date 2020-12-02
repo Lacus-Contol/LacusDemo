@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00E61919"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtTitulo"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.098" />
+
+    <Button
+        android:id="@+id/btnMapa"
+        android:layout_width="260dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="#3F51B5"
+        android:text="@string/btnMapa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgView" />
+
+    <Button
+        android:id="@+id/btnInventario"
+        android:layout_width="260dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#C71515"
+        android:text="@string/btnInventario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMapa" />
+
+    <Button
+        android:id="@+id/btnAlta"
+        android:layout_width="260dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#26A32A"
+        android:text="@string/btnAlta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnInventario" />
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitulo"
+        app:srcCompat="@drawable/busstop" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
