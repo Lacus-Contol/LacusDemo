@@ -17,4 +17,5 @@
     <string name="btnFiltrar">Filtrar</string>
     <string name="btnReiniciar">Reiniciar</string>
     <string name="txtDatos">Aqui se mostraran todo el inventario</string>
+    <string name="todo">TODO</string>
 </resources>
