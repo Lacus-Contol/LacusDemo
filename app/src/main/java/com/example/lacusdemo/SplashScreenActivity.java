@@ -11,7 +11,7 @@ import android.view.WindowManager;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private final int DURACION_SPLASH = 4000;
+    private final int DURACION_SPLASH = 5000;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
