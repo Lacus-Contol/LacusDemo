@@ -18,11 +18,12 @@ import java.util.List;
 
 public class AltaActivity extends AppCompatActivity {
 
+    long n = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Camion + n"); //Añadir lectura de camion por numeracion
+        DatabaseReference myRef = database.getReference();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alta);
@@ -39,6 +40,7 @@ public class AltaActivity extends AppCompatActivity {
                 (EditText) findViewById(R.id.edtModelo)
         };
 
+
         btnAction[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,14 +52,15 @@ public class AltaActivity extends AppCompatActivity {
         btnAction[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getFireBaseItems();
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("Camion + n"); //Añadir lectura de camion por numeracion
+                DatabaseReference myRef = database.getReference("Camion" + n); //Añadir lectura de camion por numeracion
 
                 List<String> Truck = new ArrayList<String>();
                 for (EditText txt : txtRecive)
                     Truck.add(txt.getText().toString());
                 Truck.add("New");
-                Truck.add("34");    //Cambiar por variables de ubicacion actual
+                Truck.add("-34");    //Cambiar por variables de ubicacion actual
                 Truck.add("151");
 
                 myRef.setValue(Truck);
@@ -65,20 +68,24 @@ public class AltaActivity extends AppCompatActivity {
                     txt.setText("");
             }
         });
+    }
+
+    void getFireBaseItems() {
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                value = "55";
+                n = dataSnapshot.getChildrenCount() - 1;
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                //Log.w(TAG, "Failed to read value.", error.toException());
+                //Toast.makeText(this, "Error on consult", Toast.LENGTH_SHORT).show();
             }
         });
     }
