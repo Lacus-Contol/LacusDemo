@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -35,7 +34,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
 // Add multiple markers in Sydney and move the camera
-        LatLng[] markers = {
+        /*LatLng[] markers = {
                 new LatLng(-34, 151),
                 new LatLng(-35, 152),
                 new LatLng(-36, 150),
@@ -43,28 +42,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
 
         for (char i = 0; i < markers.length; i++)
-            mMap.addMarker(new MarkerOptions().position(markers[i]).title("Marker in Sydney"));
+            mMap.addMarker(new MarkerOptions().position(markers[i]).title("Marker in Sydney"));*/
 
         //camera on central point markers[0]
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markers[0], 10));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markers[0], 10));
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
 
-        // Read from the database
-        myRef.addValueEventListener(new ValueEventListener() {
+        //addValueEventListener
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                Object value = dataSnapshot.getValue(Object.class);
-                value = "5";
-                //Log.d(TAG, "Value is: " + value);
+                int i = 0;
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    if (i % 2 == 0) {
+                        String[] markers = {
+                                postSnapshot.child("0").getValue(String.class),  //Marca
+                                postSnapshot.child("5").getValue(String.class),  //Status
+                                postSnapshot.child("6").getValue(String.class),  //Longitud
+                                postSnapshot.child("7").getValue(String.class)   //Latitud
+                        };
+
+                        float n = dataSnapshot.getChildrenCount();
+
+                        mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(Float.valueOf(markers[2]), Float.valueOf(markers[3])))
+                                .title("Marker in Sydney"));
+                    }
+                    i++;
+                }
             }
 
             @Override
